@@ -1,13 +1,13 @@
-import { useRef } from "react";
+import React, { useRef } from "react";
 import "./styles.css";
 
-interface InputFieldProps {
+interface props {
   todo: string;
   setTodo: React.Dispatch<React.SetStateAction<string>>;
   handleAdd: (e: React.FormEvent) => void;
 }
 
-const InputField = ({ todo, setTodo, handleAdd }: InputFieldProps) => {
+const InputField: React.FC<props> = ({ todo, setTodo, handleAdd }) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   return (
@@ -19,15 +19,15 @@ const InputField = ({ todo, setTodo, handleAdd }: InputFieldProps) => {
       }}
     >
       <input
-        ref={inputRef}
+        type="text"
+        placeholder="Enter a Task"
         value={todo}
+        ref={inputRef}
         onChange={(e) => setTodo(e.target.value)}
-        type="input"
-        placeholder="Enter a task"
         className="input__box"
       />
       <button type="submit" className="input_submit">
-        Go
+        GO
       </button>
     </form>
   );

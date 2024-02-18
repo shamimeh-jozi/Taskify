@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { useRef } from "react";
-import { AiFillEdit, AiFillDelete } from "react-icons/ai";
-import { MdDone } from "react-icons/md";
-import { Draggable } from "react-beautiful-dnd";
-import { Todo } from "./../model";
+import { AiFillEdit, AiFillDelete } from 'react-icons/ai';
+import React, { useEffect, useState } from 'react';
+import { Draggable } from 'react-beautiful-dnd';
+import { MdDone } from 'react-icons/md';
+import { Todo } from '../models/models';
+import { useRef } from 'react';
 
 const SingleTodo: React.FC<{
   index: number;
@@ -47,23 +47,23 @@ const SingleTodo: React.FC<{
           {...provided.draggableProps}
           {...provided.dragHandleProps}
           ref={provided.innerRef}
-          className={`todos__single ${snapshot.isDragging ? "drag" : ""}`}
+          className={`todos__single ${snapshot.isDragging ? 'drag' : ''}`}
         >
           {edit ? (
             <input
               value={editTodo}
               onChange={(e) => setEditTodo(e.target.value)}
-              className="todos__single--text"
+              className='todos__single--text'
               ref={inputRef}
             />
           ) : todo.isDone ? (
-            <s className="todos__single--text">{todo.todo}</s>
+            <s className='todos__single--text'>{todo.todo}</s>
           ) : (
-            <span className="todos__single--text">{todo.todo}</span>
+            <span className='todos__single--text'>{todo.todo}</span>
           )}
           <div>
             <span
-              className="icon"
+              className='icon'
               onClick={() => {
                 if (!edit && !todo.isDone) {
                   setEdit(!edit);
@@ -72,10 +72,10 @@ const SingleTodo: React.FC<{
             >
               <AiFillEdit />
             </span>
-            <span className="icon" onClick={() => handleDelete(todo.id)}>
+            <span className='icon' onClick={() => handleDelete(todo.id)}>
               <AiFillDelete />
             </span>
-            <span className="icon" onClick={() => handleDone(todo.id)}>
+            <span className='icon' onClick={() => handleDone(todo.id)}>
               <MdDone />
             </span>
           </div>
